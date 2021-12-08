@@ -33,3 +33,5 @@ But anyways, you know what the error means, do you? The only changes I made are 
 extension EitherOr: **Hashable,** Equatable where ~...~ **EitherType: Hashable, OrType: Hashable {}**
 
 That's how you do it!
+
+> **Note to alert readers:** You may have noticed a file called `Testing.playgroundbook.zip`. That is the place you can test with other features!
