@@ -22,16 +22,17 @@ enum EitherOr<EitherType, OrType> {
 extension EitherOr: Hashable, Equatable where EitherType: Hashable, OrType: Hashable {}
 ```
 
-> **Note:** You must conform it to both `Hashable` and `Equatable` or you'll get:
->
-> > **Conditional conformance of type `EitherOr<EitherType, OrType>` does not imply conformance to inherited protocol `Equatable`.**
-> >
-> > Did you mean to explictly state the conformance like `extension EitherOr: Hashable, Equatable where EitherType: Hashable, OrType: Hashable {}`?
-
-But anyways, you know what the error means, do you? The only changes I made are shown below.
-
-extension EitherOr: **Hashable,** Equatable where ~...~ **EitherType: Hashable, OrType: Hashable {}**
-
 That's how you do it!
+
+The process looks like this:
+
+```mermaid
+flowchart TD
+  A[Create EitherOr enum] --> B{Is the case the either case?};
+  B -- Yes --> C[Make the type the first one in the brackets];
+  B -- No --> D[Make the type the second one in the brackets];
+  C --> E[You are done!];
+  D --> E[You are done!];
+```
 
 > **Note to alert readers:** You may have noticed a file called `Testing.playgroundbook.zip`. That is the place you can test with other features!
